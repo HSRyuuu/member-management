@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http: //www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <link  th:href="@{/css/bootstrap.min.css}"
+           href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>멤버 삭제 폼</h2>
+
+    </div>
+
+    <h4 class="mb-3" th:if="${param.status}" th:text="'삭제 완료'">삭제할 멤버 입력</h4>
+    <h4 class="mb-3" th:unless="${param.status}">삭제할 멤버 입력</h4>
+
+    <form action="item.html" th:action method="post">
+        <div>
+            <label for="itemId">멤버 Id</label>
+            <input type="text" id="itemId" name="itemId" class="form-control" placeholder="삭제할 멤버 Id을 입력하세요">
+        </div>
+
+        <hr class="my-2">
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary" type="submit">멤버
+                    삭제</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary"
+                        onclick="location.href='members.html'"
+                        th:onclick="|location.href='@{/basic/members}'|"
+                        type="button">취소</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary"
+                        onclick="location.href='members.html'"
+                        th:onclick="|location.href='@{/basic/members}'|"
+                        type="button">목록으로</button>
+            </div>
+        </div>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>

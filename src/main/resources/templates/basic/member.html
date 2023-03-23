@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http: //www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+            href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>멤버 상세</h2>
+    </div>
+    <!-- 추가 -->
+    <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+
+    <div>
+        <label for="memberId">멤버 Id</label>
+        <input type="text" id="memberId" name="memberId" class="form-control"
+               value="1" th:value="${member.id}" readonly>
+    </div>
+    <div>
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" class="form-control"
+               value="이름" th:value="${member.name}" readonly>
+    </div>
+    <div>
+        <label for="age">나이</label>
+        <input type="text" id="age" name="age" class="form-control"
+               value="20" th:value="${member.age}" readonly>
+    </div>
+    <div>
+        <label for="birthday">생년월일</label>
+        <input type="text" id="birthday" name="birthday" class="form-control"
+               value="19980803" th:value="${member.birthday}" readonly>
+    </div>
+    <div>
+        <label for="phoneNumber">연락처</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control"
+               value="01053092890" th:value="${member.phoneNumber}" readonly>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg"
+                    onclick="location.href='editForm.html'"
+                    th:onclick="|location.href='@{/basic/members/{memberId}/edit (memberId=${member.id})}'|"
+                    type="button">상품 수정</button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="location.href='members.html'"
+                    th:onclick="|location.href='@{/basic/members}'|"
+                    type="button">목록으로</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
