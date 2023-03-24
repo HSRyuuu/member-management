@@ -1,9 +1,8 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http: //www.thymeleaf.org">
+<html>
 <head>
     <meta charset="utf-8">
-    <link th:href="@{/css/bootstrap.min.css}"
-            href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -14,7 +13,6 @@
         <div class="col">
             <button class="btn btn-outline-danger btn-sm  float-end "
                     onclick="location.href='deleteForm.html'"
-                    th:onclick="|location.href='@{/basic/members/delete}'|"
                     type="button">멤버 삭제</button>
         </div>
     </div>
@@ -22,7 +20,6 @@
         <div class="col">
             <button class="btn btn-primary float-end"
                     onclick="location.href='addForm.html'"
-                    th:onclick="|location.href='@{/basic/members/add}'|"
                     type="button">멤버 등록</button>
         </div>
     </div>
@@ -39,12 +36,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="member : ${members}">
-                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.id}">회원 Id</a></td>
-                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.name}">회원 나이</a></td>
-                <td th:text="${member.age}">20</td>
-                <td th:text="${member.birthday}">19980803</td>
-                <td th:text="${member.phoneNumber}">01053092890</td>
+            <tr>
+                <td><a href="member.html" >1001</a></td>
+                <td><a href="member.html" >memberA</a></td>
+                <td >20</td>
+                <td >19980803</td>
+                <td >01053092890</td>
+            </tr>
+            <tr>
+                <td><a href="member.html" >1002</a></td>
+                <td><a href="member.html" >memberB</a></td>
+                <td >30</td>
+                <td >19981112</td>
+                <td >01053092890</td>
             </tr>
             </tbody>
         </table>

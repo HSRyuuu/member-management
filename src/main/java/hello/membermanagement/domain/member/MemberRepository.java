@@ -1,10 +1,12 @@
 package hello.membermanagement.domain.member;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Repository
 public class MemberRepository {
     private static final Map<Long, Member> store = new HashMap<>();
     private static Long sequence = 1000L; // Id

@@ -1,10 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http: //www.thymeleaf.org">
+<html>
 
 <head>
     <meta charset="utf-8">
-    <link  th:href="@{/css/bootstrap.min.css}"
-           href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <style>
         .container {
             max-width: 560px;
@@ -18,10 +17,9 @@
 
     </div>
 
-    <h4 class="mb-3" th:if="${param.status}" th:text="'삭제 완료'">삭제할 멤버 입력</h4>
-    <h4 class="mb-3" th:unless="${param.status}">삭제할 멤버 입력</h4>
+    <h4 class="mb-3">삭제할 멤버 입력</h4>
 
-    <form action="member.html" th:action method="post">
+    <form action="member.html"  method="post">
         <div>
             <label for="memberId">멤버 Id</label>
             <input type="text" id="memberId" name="memberId" class="form-control" placeholder="삭제할 멤버 Id을 입력하세요">
@@ -36,13 +34,11 @@
             <div class="col">
                 <button class="w-100 btn btn-secondary"
                         onclick="location.href='members.html'"
-                        th:onclick="|location.href='@{/basic/members}'|"
                         type="button">취소</button>
             </div>
             <div class="col">
                 <button class="w-100 btn btn-secondary"
                         onclick="location.href='members.html'"
-                        th:onclick="|location.href='@{/basic/members}'|"
                         type="button">목록으로</button>
             </div>
         </div>
