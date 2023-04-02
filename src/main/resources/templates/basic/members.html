@@ -1,21 +1,23 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http: //www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <link th:href="@{/css/bootstrap.min.css}"
             href="../css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-
+<br>
 <div class="container" style="max-width: 800px">
-    <div class="py-5 text-center">
-        <h1>멤버 목록</h1>
+    <div class="py-1 text-center border-3">
+        <h1 class="font-monospace-bold" th:text="#{page.members}">멤버 목록</h1>
     </div>
     <div class="py-1 row">
         <div class="col text-end">
             <button class="btn btn-outline-danger py-1 btn-sm  "
                     onclick="location.href='deleteForm.html'"
                     th:onclick="|location.href='@{/basic/members/delete}'|"
+                    th:text="#{button.deleteMember}"
                     type="button">멤버 삭제</button>
         </div>
     </div>
@@ -24,6 +26,7 @@
             <button class="btn btn-primary py-2 "
                     onclick="location.href='addForm.html'"
                     th:onclick="|location.href='@{/basic/members/add}'|"
+                    th:text="#{button.addMember}"
                     type="button">멤버 등록</button>
         </div>
     </div>
@@ -33,18 +36,18 @@
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>이름</th>
-                <th>나이</th>
-                <th>생년월일</th>
-                <th>연락처</th>
-                <th>이메일</th>
+                <th th:text="#{label.member.id}">ID</th>
+                <th th:text="#{label.member.name}">이름</th>
+                <th th:text="#{label.member.age}">나이</th>
+                <th th:text="#{label.member.birthday}">생년월일</th>
+                <th th:text="#{label.member.phoneNumber}">전화번호</th>
+                <th th:text="#{label.member.email}">이메일</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="member : ${members}">
-                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.id}">회원 Id22</a></td>
-                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.name}">회원 나이22</a></td>
+                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.id}">회원 Id</a></td>
+                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.name}">회원 나이</a></td>
                 <td th:text="${member.age}">2022</td>
                 <td th:text="${member.birthday}">1998080223</td>
                 <td th:text="${member.phoneNumber}">0105309289022</td>

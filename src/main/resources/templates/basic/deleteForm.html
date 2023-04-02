@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http: //www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -12,38 +12,39 @@
     </style>
 </head>
 <body>
+<br>
 <div class="container">
-    <div class="py-5 text-center">
-        <h2>멤버 삭제 폼</h2>
+    <div class="py-3 text-center">
+        <h1 class="font-monospace-bold" th:text="#{page.deleteMember}">멤버 삭제 폼</h1>
 
     </div>
 
-    <h4 class="mb-3" th:if="${param.status}" th:text="'삭제 완료'">삭제할 멤버 입력</h4>
-    <h4 class="mb-3" th:unless="${param.status}">삭제할 멤버 입력</h4>
+    <h4 class="mb-3" th:if="${param.status}" th:text="#{text.deleteComplete}">삭제할 멤버 입력</h4>
+    <h4 class="mb-3" th:unless="${param.status}" th:text="#{order.write.deleteMember}">삭제할 멤버 입력</h4>
 
     <form action="member.html" th:action method="post">
         <div>
-            <label for="memberId">멤버 Id</label>
-            <input type="text" id="memberId" name="memberId" class="form-control" placeholder="삭제할 멤버 Id을 입력하세요">
+            <label for="memberId" th:text="#{label.member.id}">멤버 Id</label>
+            <input type="text" id="memberId" name="memberId" class="form-control" th:placeholder="#{order.write.deleteId}" placeholder="삭제할 멤버 Id을 입력하세요">
         </div>
 
         <hr class="my-2">
         <div class="row">
             <div class="col">
-                <button class="w-100 btn btn-primary" type="submit">멤버
-                    삭제</button>
+                <button class="w-100 btn btn-primary" type="submit"
+                        th:text="#{button.delete}">멤버 삭제</button>
             </div>
             <div class="col">
                 <button class="w-100 btn btn-secondary"
                         onclick="location.href='members.html'"
                         th:onclick="|location.href='@{/basic/members}'|"
                         type="button"
-                        th:if="${param.status}" th:text="'목록으로'">취소</button>
+                        th:if="${param.status}"th:text="#{button.list}">목록으로</button>
                 <button class="w-100 btn btn-secondary"
                         onclick="location.href='members.html'"
                         th:onclick="|location.href='@{/basic/members}'|"
                         type="button"
-                        th:unless="${param.status}">취소</button>
+                        th:unless="${param.status}" th:text="#{button.cancel}">취소</button>
             </div>
 
 

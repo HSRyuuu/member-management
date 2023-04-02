@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -7,16 +7,15 @@
 </head>
 <body>
 <div class="py-5 text-center">
-    <h2>멤버 정보 관리 프로그램 </h2>
-    <h4>(addressManagement Ver.3.0)</h4>
-
+    <h2 th:text="#{page.index}">멤버 정보 관리 프로그램 </h2>
+    <h4>(addressManagement Ver.3.1)</h4>
 
     <div class="col">
         <button class="btn btn-outline-primary  float-md-none "
                 onclick="location.href='/basic/members'"
+                th:text="#{button.index}"
                 type="button">멤버 정보 관리 프로그램으로 이동</button>
     </div>
 </div>
-
 </body>
 </html>
