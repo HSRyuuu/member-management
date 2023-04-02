@@ -7,26 +7,28 @@
 </head>
 <body>
 
-<div class="container" style="max-width: 600px">
+<div class="container" style="max-width: 800px">
     <div class="py-5 text-center">
-        <h2>멤버 목록</h2>
-
-        <div class="col">
-            <button class="btn btn-outline-danger btn-sm  float-end "
+        <h1>멤버 목록</h1>
+    </div>
+    <div class="py-1 row">
+        <div class="col text-end">
+            <button class="btn btn-outline-danger py-1 btn-sm  "
                     onclick="location.href='deleteForm.html'"
                     th:onclick="|location.href='@{/basic/members/delete}'|"
                     type="button">멤버 삭제</button>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-primary float-end"
+    <div class="py-1 row">
+        <div class="col text-end">
+            <button class="btn btn-primary py-2 "
                     onclick="location.href='addForm.html'"
                     th:onclick="|location.href='@{/basic/members/add}'|"
                     type="button">멤버 등록</button>
         </div>
     </div>
-    <hr class="my-4">
+
+    <hr class="my-2">
     <div>
         <table class="table">
             <thead>
@@ -36,15 +38,17 @@
                 <th>나이</th>
                 <th>생년월일</th>
                 <th>연락처</th>
+                <th>이메일</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="member : ${members}">
-                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.id}">회원 Id</a></td>
-                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.name}">회원 나이</a></td>
-                <td th:text="${member.age}">20</td>
-                <td th:text="${member.birthday}">19980803</td>
-                <td th:text="${member.phoneNumber}">01053092890</td>
+                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.id}">회원 Id22</a></td>
+                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.name}">회원 나이22</a></td>
+                <td th:text="${member.age}">2022</td>
+                <td th:text="${member.birthday}">1998080223</td>
+                <td th:text="${member.phoneNumber}">0105309289022</td>
+                <td th:text="${member.email}">hello@gmail.com22</td>
             </tr>
             </tbody>
         </table>

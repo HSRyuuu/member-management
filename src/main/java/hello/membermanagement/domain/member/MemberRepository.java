@@ -28,6 +28,7 @@ public class MemberRepository {
         findMember.setAge(updateParam.getAge());
         findMember.setBirthday(updateParam.getBirthday());
         findMember.setPhoneNumber(updateParam.getPhoneNumber());
+        findMember.setEmail(updateParam.getEmail());
     }
     public void deleteMember(Long id){
         store.remove(id);

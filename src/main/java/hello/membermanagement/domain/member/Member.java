@@ -8,16 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Member {
     private Long id;
     private String name;
-    private int age;
+    private Integer age;
     private String birthday;
     private String phoneNumber;
+    private String email;
 
     public Member() {
     }
-    public Member(String name, int age, String birthday, String phoneNumber) {
+    public Member(String name, Integer age, String birthday, String phoneNumber, String email) {
         this.name = name;
         this.age = age;
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 }

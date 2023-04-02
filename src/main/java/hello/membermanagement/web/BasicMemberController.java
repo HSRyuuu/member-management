@@ -121,8 +121,8 @@ public class BasicMemberController {
      */
     @PostConstruct
     public void init(){
-        memberRepository.save(new Member("memberA", 20, "19981212", "01023234545"));
-        memberRepository.save(new Member("memberB", 30, "19941125", "01026734812"));
+        memberRepository.save(new Member("memberA", 20, "19981212", "01023234545","abc123@naver.com"));
+        memberRepository.save(new Member("memberB", 30, "19941125", "01026734812","hello@gmail.com"));
     }
 
 }
