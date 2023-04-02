@@ -37,8 +37,15 @@
                 <button class="w-100 btn btn-secondary"
                         onclick="location.href='members.html'"
                         th:onclick="|location.href='@{/basic/members}'|"
-                        type="button">취소(목록으로)</button>
+                        type="button"
+                        th:if="${param.status}" th:text="'목록으로'">취소</button>
+                <button class="w-100 btn btn-secondary"
+                        onclick="location.href='members.html'"
+                        th:onclick="|location.href='@{/basic/members}'|"
+                        type="button"
+                        th:unless="${param.status}">취소</button>
             </div>
+
 
         </div>
     </form>
