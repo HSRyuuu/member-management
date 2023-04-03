@@ -2,6 +2,7 @@ package hello.membermanagement.web;
 
 import hello.membermanagement.domain.member.Member;
 import hello.membermanagement.domain.member.MemberRepository;
+import hello.membermanagement.web.validationform.DeleteValidationForm;
 import hello.membermanagement.web.validationform.MemberValidationEditForm;
 import hello.membermanagement.web.validationform.MemberValidationSaveForm;
 import lombok.RequiredArgsConstructor;
@@ -97,7 +98,8 @@ public class MemberController {
     /**
      * editForm에서 저장 버튼을 누르면 Post 방식으로 submit 된다.
      * @param memberId
-     * @param member -> 수정된 멤버 정보를 받아서 member 객체로 받아온다.
+     * @param form-> 수정된 멤버 정보를 받아서 MemberValidationEditForm 객체로 받아온다.
+     * form의 정보를 바탕으로 Member 객체를 만들어서 updateMember 메소드를 실행한다.
      * @return redirect 방식으로 수정된 정보가 적용된 /members/{memberId} 로 돌아간다.
      */
     @PostMapping("/{memberId}/edit")
@@ -128,13 +130,22 @@ public class MemberController {
     /**
      * deleteForm 에서 '멤버 삭제' 버튼을 누르면 입력한 Id를 Post형식으로 받는다.
      * memberRepository에서 삭제하고, 삭제되었다는 메시지를 위해 상단의 텍스트가 '삭제완료' 로 변경된다.
-     * @param memberId
+     * @param form html에서의 member와 매칭해준다.
      * @param redirectAttributes
      * @return
      */
     @PostMapping("/delete")
-    public String deleteItem(Long memberId, RedirectAttributes redirectAttributes){
-        memberRepository.deleteMember(memberId);
+    public String deleteItem(@Validated @ModelAttribute("member") DeleteValidationForm form, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+
+        // 검증에 실패하면 다시 입력 폼으로
+        if (bindingResult.hasErrors()) {
+            return "basic/deleteForm"; // 삭제폼 템플릿
+        }else if(!memberRepository.isExist(form.getId())){
+            bindingResult.reject("idNotExist", new Object[]{form.getId().toString()}, null);
+            return "basic/deleteForm";
+        }
+
+        memberRepository.deleteMember(form.getId());
         redirectAttributes.addAttribute("status",true);
         return "redirect:/basic/members/delete";
     }
@@ -147,6 +158,7 @@ public class MemberController {
     public void init(){
         memberRepository.save(new Member("memberA", 20, "19981212", "010-2323-4545","abc123@naver.com"));
         memberRepository.save(new Member("memberB", 30, "19941125", "010-2673-4812","hello@gmail.com"));
+        memberRepository.save(new Member("memberC", 50, "19890102", "010-1233-3232","mem3@gmail.com"));
     }
 
 }

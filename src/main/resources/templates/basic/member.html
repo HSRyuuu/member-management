@@ -17,7 +17,7 @@
         <h1 class="font-monospace-bold" th:text="#{page.member}">멤버 개인정보</h1>
     </div>
     <!-- 추가 -->
-    <h4 th:if="${param.status}" th:text="#{text.saveComplete}"></h4>
+    <h4 class="text-primary" th:if="${param.status}" th:text="#{text.saveComplete}">저장 완료</h4>
 
     <div>
         <label for="memberId" th:text="#{label.member.id}">멤버 Id</label>

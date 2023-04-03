@@ -85,4 +85,21 @@ class MemberRepositoryTest {
     @Test
     void clearStore() {
     }
+
+    @Test
+    void isExist() {
+        //given
+        Member member1 = new Member("memA",12,"19980803","01053092890", "hello@gmail.com");
+        Member member2 = new Member("memB",12,"19980803","01053092890", "hello2@gmail.com");
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+        Long id1 = member1.getId();
+        Long id2 = member2.getId();
+        //when
+        boolean exist = memberRepository.isExist(id1);
+        boolean not_exist = memberRepository.isExist(1342L);
+
+        assertThat(exist).isTrue();
+        assertThat(not_exist).isFalse();
+    }
 }

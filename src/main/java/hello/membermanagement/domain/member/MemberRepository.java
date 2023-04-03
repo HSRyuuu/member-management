@@ -33,6 +33,12 @@ public class MemberRepository {
     public void deleteMember(Long id){
         store.remove(id);
     }
+
+    public boolean isExist(Long id){
+        if(store.containsKey(id))return true;
+        else return false;
+    }
+
     /**
      * 테스트용 전체 삭제 메소드
      */
