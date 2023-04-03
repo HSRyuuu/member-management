@@ -19,12 +19,11 @@ public class MemberValidationEditForm {
     @Range(min = 1, max = 120)
     private Integer age;
 
-
     @Pattern(regexp = "\\d{4}\\d{2}\\d{2}")
     private String birthday;
 
     @NotNull
-    @Pattern(regexp = "(02|010)-\\d{3,4}-\\d{4}")
+    @Pattern(regexp = "(010)-\\d{3,4}-\\d{4}")
     private String phoneNumber;
     @Email
     private String email;
