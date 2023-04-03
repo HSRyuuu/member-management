@@ -22,10 +22,12 @@
     <h4 class="mb-3" th:if="${param.status}" th:text="#{text.deleteComplete}">삭제할 멤버 입력</h4>
     <h4 class="mb-3" th:unless="${param.status}" th:text="#{order.write.deleteMember}">삭제할 멤버 입력</h4>
 
-    <form action="member.html" th:action method="post">
+    <form action="member.html" th:action th:object="${member}" method="post">
         <div>
-            <label for="memberId" th:text="#{label.member.id}">멤버 Id</label>
-            <input type="text" id="memberId" name="memberId" class="form-control" th:placeholder="#{order.write.deleteId}" placeholder="삭제할 멤버 Id을 입력하세요">
+            <label for="id" th:text="#{label.member.id}">멤버 Id</label>
+            <input type="text" id="id"  class="form-control"
+                   th:field="*{id}"
+                   th:placeholder="#{order.write.deleteId}" placeholder="삭제할 멤버 Id을 입력하세요">
         </div>
 
         <hr class="my-2">
