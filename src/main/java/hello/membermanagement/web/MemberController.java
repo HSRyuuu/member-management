@@ -24,7 +24,6 @@ public class MemberController {
 
     /**
      * 맨 처음에 전체 멤버 목록 폼을 뿌려준다.
-     * @param model
      * @return members.html 멤버 목록 폼
      */
     @GetMapping
@@ -35,10 +34,8 @@ public class MemberController {
     }
 
     /**
-     * members.html에서 특정 멤버의 id 또는 이름을 누르면 멤버의 상세 폼으로 이동한다.
-     * uri는 /basic/members/{memberId} 이다.
-     * @param memberId -> @PathVariable
-     * @param model
+     * /members 에서 특정 멤버의 id 또는 이름을 누르면 멤버의 상세 폼으로 이동한다.
+     * @param @PathVariable memberId
      * @return member.html 멤버 상세 폼
      */
     @GetMapping("/{memberId}")
@@ -59,10 +56,9 @@ public class MemberController {
     }
 
     /**
-     * addForm에서 정보를 입력한 후 '멤버 등록' 버튼을 누르면 Post방식으로 submit 된다.
-     * @param form -> @ModelAttribute로 정보를 바탕으로 form 객체를 생성한다.
-     * 이후 form의 속성값을 바탕으로 member 객체를 생성해준다.
-     * @param redirectAttributes -> status=true 쿼리가 들어오면 상단의 텍스트를 변경하도록 member.html에 설정되어있다.
+     * addForm에서 정보를 입력한 후 '멤버 등록' 버튼을 누르면 아래 메소드 실행
+     * @param form -> @ModelAttribute로 정보를 바탕으로 form 객체를 생성한다. -> 이후 member객체로 변경
+     * @param redirectAttributes -> status=true 쿼리가 들어오면 상단의 텍스트를 변경하도록 설정
      * @return redirect 방식으로 /basic/members/{memberId}
      */
     @PostMapping("/add")
@@ -84,8 +80,6 @@ public class MemberController {
 
     /**
      * member.html에서 '정보 수정' 버튼을 누르면 editForm을 뿌려준다.
-     * @param memberId
-     * @param model
      * @return editForm.html 멤버 수정 폼
      */
     @GetMapping("/{memberId}/edit")
@@ -96,10 +90,9 @@ public class MemberController {
     }
 
     /**
-     * editForm에서 저장 버튼을 누르면 Post 방식으로 submit 된다.
-     * @param memberId
+     * editForm에서 저장 버튼을 누르면 정보 저장
+     * 검증에 실패하면 다시 editForm으로 돌아감
      * @param form-> 수정된 멤버 정보를 받아서 MemberValidationEditForm 객체로 받아온다.
-     * form의 정보를 바탕으로 Member 객체를 만들어서 updateMember 메소드를 실행한다.
      * @return redirect 방식으로 수정된 정보가 적용된 /members/{memberId} 로 돌아간다.
      */
     @PostMapping("/{memberId}/edit")
@@ -130,8 +123,6 @@ public class MemberController {
     /**
      * deleteForm 에서 '멤버 삭제' 버튼을 누르면 입력한 Id를 Post형식으로 받는다.
      * memberRepository에서 삭제하고, 삭제되었다는 메시지를 위해 상단의 텍스트가 '삭제완료' 로 변경된다.
-     * @param form html에서의 member와 매칭해준다.
-     * @param redirectAttributes
      * @return
      */
     @PostMapping("/delete")
@@ -149,8 +140,5 @@ public class MemberController {
         redirectAttributes.addAttribute("status",true);
         return "redirect:/basic/members/delete";
     }
-
-
-
 
 }
