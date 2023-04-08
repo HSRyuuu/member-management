@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="max-width: 600px">
+    <div class="py-3 text-center">
+        <h2>멤버 정보 관리 프로그램</h2>
+    </div>
+    <hr class="my-3">
+
+    <div class="row">
+        <div class="col text-end">
+            <div class="py-1 text-center">
+                <h4>관리자 로그인 => </h4>
+            </div>
+        </div>
+
+        <div class="col text-end">
+            <button class="w-100 btn btn-dark btn-lg"
+                  onclick="location.href='loginForm.html'"
+                 th:onclick="|location.href='@{/login}'|" type="button">로그인</button>
+        </div>
+    </div>
+    <hr class="my-3">
+</div> <!-- /container -->
+</body>
+</html>
