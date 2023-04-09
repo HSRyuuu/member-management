@@ -8,9 +8,11 @@ import java.util.*;
 @Repository
 public class AdminRepository {
     private static Map<String, Admin> store = new HashMap<>();
+    private static Long sequence = 0L;
 
     public Admin save(Admin admin){
-        store.put(admin.getId(),admin);
+        String id = "admin"+String.valueOf(++sequence);
+        store.put(id,admin);
         return admin;
     }
 

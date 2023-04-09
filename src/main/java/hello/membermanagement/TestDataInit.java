@@ -29,7 +29,6 @@ public class TestDataInit {
     @PostConstruct
     public void adminInit(){
         Admin admin = new Admin();
-        admin.setId("admin1");
         admin.setLoginId("test");
         admin.setPassword("test!");
         adminRepository.save(admin);

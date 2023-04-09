@@ -1,4 +1,4 @@
-package hello.membermanagement.web;
+package hello.membermanagement.web.member;
 
 import hello.membermanagement.domain.member.Member;
 import hello.membermanagement.domain.member.MemberRepository;

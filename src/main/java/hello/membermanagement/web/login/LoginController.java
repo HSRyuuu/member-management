@@ -1,4 +1,4 @@
-package hello.membermanagement.web;
+package hello.membermanagement.web.login;
 
 import hello.membermanagement.domain.admin.Admin;
 import hello.membermanagement.domain.admin.LoginService;
