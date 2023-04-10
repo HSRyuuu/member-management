@@ -24,13 +24,12 @@ public class TestDataInit {
         memberRepository.save(new Member("memberA", 20, "19981212", "010-2323-4545","abc123@naver.com"));
         memberRepository.save(new Member("memberB", 30, "19941125", "010-2673-4812","hello@gmail.com"));
         memberRepository.save(new Member("memberC", 50, "19890102", "010-1233-3232","mem3@gmail.com"));
-    }
 
-    @PostConstruct
-    public void adminInit(){
         Admin admin = new Admin();
         admin.setLoginId("test");
         admin.setPassword("test!");
         adminRepository.save(admin);
+
     }
+
 }

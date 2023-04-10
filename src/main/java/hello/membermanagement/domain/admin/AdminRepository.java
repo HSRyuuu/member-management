@@ -11,8 +11,8 @@ public class AdminRepository {
     private static Long sequence = 0L;
 
     public Admin save(Admin admin){
-        String id = "admin"+String.valueOf(++sequence);
-        store.put(id,admin);
+        admin.setId("admin"+Long.toString(++sequence));
+        store.put(admin.getId(), admin);
         return admin;
     }
 

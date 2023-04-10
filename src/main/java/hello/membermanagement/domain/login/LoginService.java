@@ -1,5 +1,7 @@
-package hello.membermanagement.domain.admin;
+package hello.membermanagement.domain.login;
 
+import hello.membermanagement.domain.admin.Admin;
+import hello.membermanagement.domain.admin.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
