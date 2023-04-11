@@ -2,6 +2,7 @@ package hello.membermanagement.web;
 
 import hello.membermanagement.domain.admin.Admin;
 import hello.membermanagement.domain.login.LoginService;
+import hello.membermanagement.web.session.SessionConst;
 import hello.membermanagement.web.session.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Slf4j
 @Controller
@@ -73,7 +75,7 @@ public class LoginController {
      * 쿠키에 세션 기능 추가
      * sessionManager을 통해 쿠키를 만든다.
      */
-    @PostMapping("/login")
+    //@PostMapping("/login")
     public String loginV2(@Validated @ModelAttribute("admin") Admin admin, BindingResult bindingResult,
                           HttpServletResponse response, Model model) {
         if (bindingResult.hasErrors()) {
@@ -88,7 +90,33 @@ public class LoginController {
             return "login/loginForm";
         }
 
+        //로그인 성공 처리
         sessionManager.createSession(loginAdmin,response);
+        model.addAttribute("admin", loginAdmin);
+        return "login/loginHome";
+    }
+
+    /**
+     * HttpSession 사용
+     */
+    @PostMapping("/login")
+    public String loginV3(@Validated @ModelAttribute("admin") Admin admin, BindingResult bindingResult,
+                          HttpServletRequest request, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "login/loginForm";
+        }
+
+        Admin loginAdmin = loginService.login(admin.getLoginId(), admin.getPassword());
+        log.info("login : {}", loginAdmin);
+
+        if (loginAdmin == null) {
+            bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
+            return "login/loginForm";
+        }
+        //로그인 성공 처리
+        HttpSession session = request.getSession();
+        session.setAttribute(SessionConst.LOGIN_ADMIN, loginAdmin);
+
         model.addAttribute("admin", loginAdmin);
         return "login/loginHome";
     }
@@ -110,9 +138,22 @@ public class LoginController {
     /** V2
      * 세션 매니저 사용
      */
-    @PostMapping("/logout")
+    //@PostMapping("/logout")
     public String logoutV2(HttpServletRequest request){
         sessionManager.expire(request);
+        //index 페이지로 redirect
+        return "redirect:/home";
+    }
+    /** V3
+     * HttpSession 사용
+     */
+    @PostMapping("/logout")
+    public String logoutV3(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if(session !=null){
+            //세션 제거
+            session.invalidate();
+        }
         //index 페이지로 redirect
         return "redirect:/home";
     }
