@@ -1,7 +1,6 @@
 # member-management
 item-service에서 배운것을 토대로 addressManagement를 웹으로 만들어 보자
 
-## ver3.0
 ### 1. index 페이지 -> 멤버 조회 / 정보 수정  &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;  2. 멤버 등록 / 멤버 삭제
 <table>
   <tr>
@@ -10,5 +9,3 @@ item-service에서 배운것을 토대로 addressManagement를 웹으로 만들�
   <tr>
 </table>
 
-## ver3.1
-### 메시지, 국제화 적용
